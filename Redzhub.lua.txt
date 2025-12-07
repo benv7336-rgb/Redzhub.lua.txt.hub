@@ -1,0 +1,56 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("RedzHub Fake | Bản Tự Làm", "BloodTheme")
+
+-- TAB MAIN
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Auto Farm")
+
+Section:NewToggle("Auto Farm Level", "Tự động farm quái gần nhất", function(state)
+    _G.Farm = state
+    while _G.Farm do
+        task.wait()
+        pcall(function()
+            local p = game.Players.LocalPlayer
+            local root = p.Character.HumanoidRootPart
+            local mob = game.Workspace.Enemies:FindFirstChildWhichIsA("Model")
+
+            if mob and mob:FindFirstChild("HumanoidRootPart") then
+                root.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0,4,0)
+            end
+        end)
+    end
+end)
+
+-- TAB FRUIT
+local Tab2 = Window:NewTab("Fruit")
+local Section2 = Tab2:NewSection("Auto Fruit")
+
+Section2:NewToggle("Auto Lụm Trái", "Tự nhặt trái cây", function(val)
+    _G.Fruit = val
+    while _G.Fruit do
+        task.wait(0.2)
+        for _,v in pairs(game.Workspace:GetChildren()) do
+            if v:IsA("Tool") then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Handle.CFrame
+            end
+        end
+    end
+end)
+
+-- TAB CHEST
+local Tab3 = Window:NewTab("Chest")
+local Section3 = Tab3:NewSection("Auto Nhặt Rương")
+
+Section3:NewToggle("Auto Chest", "Tự tìm & nhặt rương", function(v)
+    _G.Chest = v
+    while _G.Chest do
+        task.wait(0.3)
+        for _,c in pairs(game.Workspace:GetDescendants()) do
+            if c.Name == "Chest" and c:FindFirstChild("TouchInterest") then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = c.CFrame
+            end
+        end
+    end
+end)
+
+print("Fake RedzHub Loaded!")
