@@ -1,0 +1,113 @@
+local META = {
+    name = "RedZ Hub",
+    author = "Ben",
+    version = "1.0"
+}
+
+print("Loaded: "..META.name.." | v"..META.version)
+
+local UI = {}
+
+function UI:Menu()
+    print("=== "..META.name.." ===")
+    print("1) Auto Farm")
+    print("2) Auto Fruit")
+    print("3) Teleport")
+    print("hub.open()")
+end
+
+function UI:Open()
+    UI:Menu()
+end
+
+local Config = {
+    AutoFarm = false,
+    AutoFruit = false
+}
+
+local Func = {}
+
+function Func.AutoFarm()
+    print("[Hub] AutoFarm running")
+end
+
+function Func.AutoFruit()
+    print("[Hub] AutoFruit running")
+end
+
+function Func.ToggleFarm()
+    Config.AutoFarm = not Config.AutoFarm
+    print("AutoFarm = "..tostring(Config.AutoFarm))
+    if Config.AutoFarm then Func.AutoFarm() end
+end
+
+function Func.ToggleFruit()
+    Config.AutoFruit = not Config.AutoFruit
+    print("AutoFruit = "..tostring(Config.AutoFruit))
+    if Config.AutoFruit then Func.AutoFruit() end
+end
+
+hub = {}
+
+function hub.open() UI:Open() end
+function hub.farm() Func.ToggleFarm() end
+function hub.fruit() Func.ToggleFruit() end
+function hub.tele(x) print("Teleport: "..tostring(x)) end
+
+UI:Open()local META = {
+    name = "RedZ Hub",
+    author = "Ben",
+    version = "1.0"
+}
+
+print("Loaded: "..META.name.." | v"..META.version)
+
+local UI = {}
+
+function UI:Menu()
+    print("=== "..META.name.." ===")
+    print("1) Auto Farm")
+    print("2) Auto Fruit")
+    print("3) Teleport")
+    print("hub.open()")
+end
+
+function UI:Open()
+    UI:Menu()
+end
+
+local Config = {
+    AutoFarm = false,
+    AutoFruit = false
+}
+
+local Func = {}
+
+function Func.AutoFarm()
+    print("[Hub] AutoFarm running")
+end
+
+function Func.AutoFruit()
+    print("[Hub] AutoFruit running")
+end
+
+function Func.ToggleFarm()
+    Config.AutoFarm = not Config.AutoFarm
+    print("AutoFarm = "..tostring(Config.AutoFarm))
+    if Config.AutoFarm then Func.AutoFarm() end
+end
+
+function Func.ToggleFruit()
+    Config.AutoFruit = not Config.AutoFruit
+    print("AutoFruit = "..tostring(Config.AutoFruit))
+    if Config.AutoFruit then Func.AutoFruit() end
+end
+
+hub = {}
+
+function hub.open() UI:Open() end
+function hub.farm() Func.ToggleFarm() end
+function hub.fruit() Func.ToggleFruit() end
+function hub.tele(x) print("Teleport: "..tostring(x)) end
+
+UI:Open()
